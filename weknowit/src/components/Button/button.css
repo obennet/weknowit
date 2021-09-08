@@ -1,0 +1,23 @@
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 100px;
+    background-color: #FFF;
+    border-radius: 8px;
+    box-shadow: 1px 1px 2px lightgrey;
+}
+
+.button-container:hover {
+    cursor: pointer;
+}
+
+.button-container:active {
+    transform: scale(0.95);
+}
+
+.button-container > p {
+    font-size: 24px;
+    font-weight: bold;
+}
