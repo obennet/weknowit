@@ -12,7 +12,7 @@ import Result from "./pages/Result";
 function App() {
   return (
       <Router>
-        <h1>CityPop</h1>
+        <h1 style={{textAlign: 'center', margin: 32}}>CityPop</h1>
           <Switch>
             <Route path="/search/:option">
               <Search />
