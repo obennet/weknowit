@@ -56,8 +56,6 @@ export const getMostPopulatedCitiesName = (countryCode: string ) => {
                 const cities = jsonResponse.geonames;
                 let citiesName:string[] = [];
                 cities.forEach((city: geoname) => {citiesName.push(city.name)});
-                console.log(citiesName);
-
                 return citiesName;
             }
             else
