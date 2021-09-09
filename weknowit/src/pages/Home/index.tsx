@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import "./home.css"
 import {Button} from "../../components/Button";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 interface HomeProps {
     option: "city" | "country";
