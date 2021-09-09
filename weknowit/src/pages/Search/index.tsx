@@ -30,7 +30,7 @@ const Search = (): JSX.Element => {
     }
 
     const handleCountrySearch = () => {
-        getCountryCode({query: input}).then((response: string) => {
+        getCountryCode(input).then((response: string) => {
             const countryCode = response;
             if (countryCode.length == 2) {
                 history.push(`/search/${option}/${countryCode}`);
