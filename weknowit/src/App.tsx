@@ -7,15 +7,15 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
-import Result from "./pages/Result";
+import Country from "./pages/Country";
 
 function App() {
   return (
       <Router>
         <h1 style={{textAlign: 'center', margin: 32}}>CityPop</h1>
           <Switch>
-            <Route path="/search/:option/:country">
-              <Result />
+            <Route path="/search/country/:countryCode">
+              <Country />
             </Route>
             <Route path="/search/:option">
               <Search />
