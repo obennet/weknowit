@@ -1,40 +1,34 @@
-import React, {CSSProperties, useState} from "react";
+import React, {ChangeEventHandler, CSSProperties, useState} from "react";
 import "./searchBar.css";
-import { FaSearch } from 'react-icons/fa';
+import {FaSearch} from 'react-icons/fa';
 
 
-interface TextInputProps {
+interface SearchBarProps {
     placeholder?: string;
     style?: CSSProperties;
+    input: string;
+    onChange: ChangeEventHandler<HTMLInputElement>;
+    onSearch: any;
 }
 
-export const SearchBar = ({placeholder, style}: TextInputProps) => {
+export const SearchBar = ({placeholder, style, input, onSearch, onChange}: SearchBarProps) => {
 
-    const [input, setInput] = useState<string>("");
 
-    const handleKeyDown = (e: { key: string; }) => {
+    const handleEnterDown = (e: { key: string; }) => {
         if (e.key === 'Enter') {
-            search();
-            setInput("");
+            onSearch();
         }
     }
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInput(e.target.value)
-    }
-
-    const search = () => {
-        console.log("search");
-    }
 
     return (
         <div className={"search-bar-container"}>
-            <input className={"input"} style={style} type={"text"} value={input} onChange={handleOnChange}
-                   placeholder={placeholder} onKeyDown={handleKeyDown}/>
+            <input className={"input"} style={style} type={"text"} value={input} onChange={onChange}
+                   placeholder={placeholder} onKeyDown={handleEnterDown}/>
 
-                   <div className={"search-icon-container"} onClick={() => search()}>
-                       <FaSearch />
-                   </div>
+            <div className={"search-icon-container"} onClick={onSearch}>
+                <FaSearch/>
+            </div>
 
 
         </div>

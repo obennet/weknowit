@@ -14,11 +14,11 @@ function App() {
       <Router>
         <h1 style={{textAlign: 'center', margin: 32}}>CityPop</h1>
           <Switch>
+            <Route path="/search/:option/:country">
+              <Result />
+            </Route>
             <Route path="/search/:option">
               <Search />
-            </Route>
-            <Route path="/result/:city">
-              <Result />
             </Route>
             <Route path="/">
               <Home />
