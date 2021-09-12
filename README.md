@@ -13,3 +13,6 @@ Types: `weknowit/src/types`
 3. Skriv `npm install` för att hämta alla nödvändiga paket.
 4. `npm start` för att starta applikationen.
 5. Applikation ska nu vara live på http://localhost:3000.
+
+## Utvecklare
+[Oscar Bennet](https://www.linkedin.com/in/oscar-bennet-897b47193/), oscar.bennet@outlook.com
