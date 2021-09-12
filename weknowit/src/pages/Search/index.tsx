@@ -3,7 +3,7 @@ import {useHistory, useParams} from "react-router-dom";
 import "./search.css"
 import {SearchBar} from "../../components/SearchBar";
 import {geoname} from "../../types";
-import {getCountryCode} from "../../functions/ApiCalls";
+import {getCityName, getCountryCode} from "../../functions/ApiCalls";
 
 interface SearchProps {
     option: "city" | "country";
@@ -26,18 +26,24 @@ const Search = (): JSX.Element => {
         if (option === "country") {
             handleCountrySearch();
         }
+        else if (option === "city") {
+            handleCitySearch();
+        }
         setInput("");
     }
 
     const handleCountrySearch = () => {
         getCountryCode(input).then((response: string) => {
             const countryCode = response;
-            if (countryCode.length == 2) {
-                history.push(`/search/${option}/${countryCode}`);
-            } else {
-                setError(countryCode);
-            }
-        }).catch((error) => console.error(error))
+            history.push(`/search/country/${countryCode}`);
+        }).catch((error) => setError(error));
+    }
+
+    const handleCitySearch = () => {
+        getCityName(input).then((response: string) => {
+            const cityName = response;
+            history.push(`/search/city/${cityName}`);
+        }).catch((error) => setError(error));
     }
 
     return (

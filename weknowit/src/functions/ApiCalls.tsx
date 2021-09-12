@@ -1,7 +1,6 @@
 import React from "react";
 import {geoname} from "../types";
 
-
 const username = "weknowit";
 const path = `http://api.geonames.org/search?type=json&username=${username}`;
 
@@ -17,11 +16,8 @@ export const getCountryCode = (query: string) => {
                 const countryCode = jsonResponse.geonames[0]?.countryCode;
                 return countryCode;
             } else
-                return "The searched country could not be found"
+                throw "The searched country could not be found"
 
-        })
-        .catch(error => {
-            return error;
         });
 }
 
@@ -60,9 +56,25 @@ export const getMostPopulatedCitiesName = (countryCode: string ) => {
             }
             else
                 return "Could not find cities"
-
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
+        });
+
+}
+
+export const getCityName = (query: string) => {
+    const fullPath = `${path}&maxRows=1&featureCode=PPLC&featureCode=PPLA&orderby=population&q=${query}`;
+
+    return fetch(fullPath)
+        .then((response) => response.json())
+        .then((jsonResponse) => {
+            const resultCount = jsonResponse.totalResultsCount;
+            if(resultCount > 0){
+                const city = jsonResponse.geonames[0].name;
+                return city;
+            }
+            else
+                throw "The searched city could not be found";
         });
 }

@@ -38,7 +38,7 @@ const Country = (): JSX.Element => {
 
             <ul>
                 {typeof cities !== "string"? cities.map((city, key) =>
-                    <Button text={city} key={key} style={{marginTop: 16}} onClick={() => handleClick(city)}/>):
+                    <Button text={city} key={key} style={{marginTop: 8, height: 64}} onClick={() => handleClick(city)}/>):
                     <p>{cities}</p>
                 }
             </ul>
