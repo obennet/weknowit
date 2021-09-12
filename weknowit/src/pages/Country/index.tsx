@@ -34,7 +34,7 @@ const Country = (): JSX.Element => {
 
     return(
         <div className={"country-container"}>
-            <h2>{countryName}</h2>
+            <h2>{countryName.toUpperCase()}</h2>
 
             <ul>
                 {typeof cities !== "string"? cities.map((city, key) =>

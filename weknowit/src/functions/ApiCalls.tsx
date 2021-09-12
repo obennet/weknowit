@@ -78,3 +78,19 @@ export const getCityName = (query: string) => {
                 throw "The searched city could not be found";
         });
 }
+
+export const getCityPopulation = (cityName: string) => {
+    const fullPath = `${path}&maxRows=1&featureCode=PPLC&featureCode=PPLA&orderby=population&name_equals=${cityName}`;
+
+    return fetch(fullPath)
+        .then((response) => response.json())
+        .then((jsonResponse) => {
+            const resultCount = jsonResponse.totalResultsCount;
+            if(resultCount > 0){
+                const population = jsonResponse.geonames[0].population;
+                return population;
+            }
+            else
+                throw "Population of city could not be found";
+        });
+}
