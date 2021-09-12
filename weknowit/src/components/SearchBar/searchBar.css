@@ -1,0 +1,33 @@
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input {
+    width: 600px;
+    height: 40px;
+    background-color: #FFF;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 1px 1px 2px lightgrey;
+    outline: none;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.search-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 1px 1px 2px lightgrey;
+    cursor: pointer;
+}
+
+.search-icon-container:active {
+    transform: scale(0.97);
+}
