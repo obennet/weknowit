@@ -28,10 +28,7 @@ export const getCountryName = (countryCode: string) => {
                 const country = jsonResponse.geonames[0]?.name;
                 return country;
             } else
-                return "Could not find country"
-        })
-        .catch(error => {
-            return error;
+                throw new Error("Could not find country");
         });
 }
 
@@ -49,10 +46,7 @@ export const getMostPopulatedCitiesName = (countryCode: string) => {
                 });
                 return citiesName;
             } else
-                return "Could not find cities"
-        })
-        .catch((error) => {
-            return error;
+                throw new Error("Could not find cities")
         });
 
 }

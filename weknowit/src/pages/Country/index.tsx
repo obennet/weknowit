@@ -14,18 +14,22 @@ const Country = (): JSX.Element => {
     const history = useHistory();
 
     const [countryName, setCountryName] = useState<string>("");
-    const [cities, setCities] = useState<string[] | string>([]);
+    const [cities, setCities] = useState<string[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         getCountryName(countryCode).then(response => {
             setCountryName(response);
-        }).catch(error => console.error(error));
+        }).catch(error => setCountryName(error.message));
 
         getMostPopulatedCitiesName(countryCode).then(response => {
             setCities(response);
             setLoading(false);
-        }).catch(error => console.error(error));
+        }).catch(error => {
+            setError(error);
+            setLoading(false);
+        });
 
     }, [countryCode]);
 
@@ -43,10 +47,11 @@ const Country = (): JSX.Element => {
                 <>
                     <h2>{countryName.toUpperCase()}</h2>
                     <ul>
-                        {typeof cities !== "string" ? cities.map((city, key) =>
+                        {error === null ?
+                            cities.map((city, key) =>
                                 <Button text={city} key={key} style={{marginTop: 8, height: 64}}
                                         onClick={() => handleClick(city)}/>) :
-                            <p>{cities}</p>
+                            <p className={"error-message"}>{error?.message}</p>
                         }
                     </ul>
                 </> :
