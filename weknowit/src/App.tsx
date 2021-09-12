@@ -13,7 +13,9 @@ import City from "./pages/City";
 function App() {
     return (
         <Router>
-            <h1 style={{textAlign: 'center', margin: 32}}>CityPop</h1>
+            <a href={"/"}>
+                <h1 style={{textAlign: 'center', margin: 32}}>CityPop</h1>
+            </a>
             <Switch>
                 <Route path="/search/city/:cityName">
                     <City/>
