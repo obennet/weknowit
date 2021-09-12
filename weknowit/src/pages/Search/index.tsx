@@ -17,7 +17,7 @@ const Search = (): JSX.Element => {
 
     const {option}: SearchProps = useParams();
     const [input, setInput] = useState<string>("");
-    const [error, setError] = useState<string>("");
+    const [error, setError] = useState<Error | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
     const history = useHistory();
@@ -28,9 +28,12 @@ const Search = (): JSX.Element => {
      */
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value);
-        setError("");
+        setError(null);
     }
 
+    /**
+     * Call the right search method depending on option
+     */
     const handleSearch = () => {
         if (option === "country") {
             handleCountrySearch();
@@ -47,8 +50,8 @@ const Search = (): JSX.Element => {
         setLoading(true);
         getCountryCode(input).then((response: string) => {
             const countryCode = response;
-            history.push(`/search/country/${countryCode}`);
             setLoading(false);
+            history.push(`/search/country/${countryCode}`);
         }).catch((error) => {
             setError(error);
             setLoading(false);
@@ -62,8 +65,8 @@ const Search = (): JSX.Element => {
         setLoading(true);
         getCityName(input).then((response: string) => {
             const cityName = response;
-            history.push(`/search/city/${cityName}`);
             setLoading(false);
+            history.push(`/search/city/${cityName}`);
         }).catch((error) => {
             setError(error);
             setLoading(false);
@@ -77,7 +80,7 @@ const Search = (): JSX.Element => {
                     <h2>SEARCH BY {option.toUpperCase()}</h2>
                     <SearchBar input={input} placeholder={`Enter a ${option}`} style={{marginTop: 16}}
                                onSearch={handleSearch} onChange={handleOnChange}/>
-                    <p className={"error-message"}>{error}</p>
+                    <p className={"error-message"}>{error?.message}</p>
                 </> :
                 <ClipLoader color={"#000"} loading={true} size={64}/>
             }
