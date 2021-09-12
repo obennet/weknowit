@@ -34,11 +34,11 @@ const Country = (): JSX.Element => {
 
     return(
         <div className={"country-container"}>
-            <h2>{countryName}</h2>
+            <h2>{countryName.toUpperCase()}</h2>
 
             <ul>
                 {typeof cities !== "string"? cities.map((city, key) =>
-                    <Button text={city} key={key} style={{marginTop: 16}} onClick={() => handleClick(city)}/>):
+                    <Button text={city} key={key} style={{marginTop: 8, height: 64}} onClick={() => handleClick(city)}/>):
                     <p>{cities}</p>
                 }
             </ul>

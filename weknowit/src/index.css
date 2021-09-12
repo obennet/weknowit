@@ -18,3 +18,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.error-message {
+  margin-top: 16px;
+  color: red;
+  text-align: center;
+}
