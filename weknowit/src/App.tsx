@@ -10,10 +10,16 @@ import Search from "./pages/Search";
 import Country from "./pages/Country";
 import City from "./pages/City";
 
+/**
+ * Router for navigation between pages
+ * @constructor
+ */
 function App() {
     return (
         <Router>
-            <h1 style={{textAlign: 'center', margin: 32}}>CityPop</h1>
+            <a href={"/"}>
+                <h1 style={{textAlign: 'center', margin: 32}}>CityPop</h1>
+            </a>
             <Switch>
                 <Route path="/search/city/:cityName">
                     <City/>

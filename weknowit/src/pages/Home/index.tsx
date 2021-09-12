@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import "./home.css"
 import {Button} from "../../components/Button";
 import { useHistory } from "react-router-dom";
@@ -7,8 +7,11 @@ interface HomeProps {
     option: "city" | "country";
 }
 
+/**
+ * Home page with 2 options - search country and search city
+ * @constructor
+ */
 const Home = (): JSX.Element => {
-
     const history = useHistory();
 
     /**
@@ -18,7 +21,6 @@ const Home = (): JSX.Element => {
     const handleClick = ({option}: HomeProps): void => {
         history.push(`/search/${option}`);
     }
-
 
     return(
         <div className={"home-container"}>
