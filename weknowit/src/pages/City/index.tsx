@@ -8,6 +8,10 @@ interface CityProps {
     cityName: string;
 }
 
+/**
+ * Page for displaying city population
+ * @constructor
+ */
 const City = (): JSX.Element => {
 
     const {cityName}: CityProps = useParams();

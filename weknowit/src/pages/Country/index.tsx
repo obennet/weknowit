@@ -9,8 +9,11 @@ interface CountryProps {
     countryCode: string;
 }
 
+/**
+ * Page displaying country with it's most populated cities
+ * @constructor
+ */
 const Country = (): JSX.Element => {
-
     const {countryCode}: CountryProps = useParams();
     const history = useHistory();
 
@@ -30,6 +33,10 @@ const Country = (): JSX.Element => {
 
     }, []);
 
+    /**
+     * Navigate to city page
+     * @param city - name of city
+     */
     const handleClick = (city: string): void => {
         history.push(`/search/country/${countryCode}/${city}`);
     }

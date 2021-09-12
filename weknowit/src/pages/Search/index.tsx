@@ -9,6 +9,10 @@ interface SearchProps {
     option: "city" | "country";
 }
 
+/**
+ * Search for city or country depending on prop option
+ * @constructor
+ */
 const Search = (): JSX.Element => {
 
     const {option}: SearchProps = useParams();
@@ -18,6 +22,10 @@ const Search = (): JSX.Element => {
 
     const history = useHistory();
 
+    /**
+     * On change setInput to value of input
+     * @param e
+     */
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value);
         setError("");
@@ -32,6 +40,9 @@ const Search = (): JSX.Element => {
         setInput("");
     }
 
+    /**
+     * Search for country and navigate to country page
+     */
     const handleCountrySearch = () => {
         setLoading(true);
         getCountryCode(input).then((response: string) => {
@@ -44,6 +55,9 @@ const Search = (): JSX.Element => {
         });
     }
 
+    /**
+     * Search for city and navigate to city page
+     */
     const handleCitySearch = () => {
         setLoading(true);
         getCityName(input).then((response: string) => {
@@ -67,8 +81,6 @@ const Search = (): JSX.Element => {
                 </> :
                 <ClipLoader color={"#000"} loading={true} size={64}/>
             }
-
-
         </div>
     )
 }

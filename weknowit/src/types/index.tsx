@@ -1,3 +1,6 @@
+/**
+ * Type of geoname fetched from geoname API
+ */
 export type geoname = {
     adminCode1: number;
     lng: number;

@@ -10,6 +10,10 @@ import Search from "./pages/Search";
 import Country from "./pages/Country";
 import City from "./pages/City";
 
+/**
+ * Router for navigation between pages
+ * @constructor
+ */
 function App() {
     return (
         <Router>

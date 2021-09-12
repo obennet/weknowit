@@ -1,4 +1,4 @@
-import React, {CSSProperties, MouseEventHandler} from "react";
+import React, {CSSProperties} from "react";
 import "./button.css";
 
 interface ButtonProps {
@@ -7,6 +7,13 @@ interface ButtonProps {
     style?: CSSProperties;
 }
 
+/**
+ * A custom button component
+ * @param text - text visible on button
+ * @param onClick - function triggered on click
+ * @param style - CSS properties
+ * @constructor
+ */
 export const Button = ({text, onClick, style}: ButtonProps): JSX.Element => {
     return (
         <div className={"button-container"} onClick={onClick} style={style}>
