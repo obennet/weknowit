@@ -5,16 +5,12 @@ import {getCountryName, getMostPopulatedCitiesName} from "../../functions/ApiCal
 import {Button} from "../../components/Button";
 import {ClipLoader} from "react-spinners";
 
-interface CountryProps {
-    countryCode: string;
-}
-
 /**
  * Page displaying country with it's most populated cities
  * @constructor
  */
 const Country = (): JSX.Element => {
-    const {countryCode}: CountryProps = useParams();
+    const {countryCode} = useParams<{ countryCode: string }>();
     const history = useHistory();
 
     const [countryName, setCountryName] = useState<string>("");
@@ -31,7 +27,7 @@ const Country = (): JSX.Element => {
             setLoading(false);
         }).catch(error => console.error(error));
 
-    }, []);
+    }, [countryCode]);
 
     /**
      * Navigate to city page
