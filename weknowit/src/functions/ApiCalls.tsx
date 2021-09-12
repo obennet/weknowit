@@ -1,4 +1,3 @@
-import React from "react";
 import {geoname} from "../types";
 
 const username = "weknowit";
@@ -15,7 +14,7 @@ export const getCountryCode = (query: string) => {
                 const countryCode = jsonResponse.geonames[0]?.countryCode;
                 return countryCode;
             } else
-                throw "The searched country could not be found"
+                throw new Error("The searched country could not be found");
         });
 }
 
@@ -68,7 +67,7 @@ export const getCityName = (query: string) => {
                 const city = jsonResponse.geonames[0].name;
                 return city;
             } else
-                throw "The searched city could not be found";
+                throw new Error("The searched city could not be found");
         });
 }
 
@@ -82,6 +81,6 @@ export const getCityPopulation = (cityName: string) => {
                 const population = jsonResponse.geonames[0].population;
                 return population;
             } else
-                throw "Population of city could not be found";
+                throw new Error("Population of city could not be found");
         });
 }
